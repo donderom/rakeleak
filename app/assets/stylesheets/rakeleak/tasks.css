@@ -1,0 +1,124 @@
+/*
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+*/
+
+body {
+  padding-bottom: 40px;
+  margin-bottom: 0;
+
+  border-bottom: 3px solid #ccc;
+  background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAHUlEQVQIW2OMMjIyXnbu3FkGKGCEMTAEYCoxVAAATIUIBSQNNdkAAAAASUVORK5CYII=) repeat;
+}
+
+#container {
+  margin: 0 auto;
+  max-width: 960px;
+}
+
+#menu {
+  background-color: #555;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+#menu .name {
+  float: right;
+  color: #eee;
+  font-size: 2em;
+  font-family: 'Open Sans Condensed';
+  margin-top: -10px;
+}
+
+#search_input {
+  width: 300px;
+}
+
+.button {
+  border-style: none;
+  cursor: pointer;
+  background-color: #4d90fe;
+  color: #f7f7f7;
+  border-radius: 5px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  padding: 2px 3px;
+  text-transform: uppercase;
+  display: none;
+}
+
+.button:hover {
+  background-color: #0072bb;
+}
+
+.button:disabled {
+  background-color: gray;
+  cursor: auto;
+  display: block;
+}
+
+input[type="search"] {
+  font-size: 16px;
+}
+
+#search_list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#search_list li div {
+  padding: 2px 5px;
+  padding-bottom: 0px;
+  background-color: inherit;
+}
+
+#search_list li:hover > div {
+  background-color: #edece4;
+}
+
+#search_list li div:hover .button {
+  display: block;
+}
+
+.errortask {
+  border: solid 2px #ee6066;
+}
+
+.task .name {
+  color: #593534;
+  font-size: 1.2em;
+  float: left;
+  line-height: 1.4em;
+  font-family: 'Open Sans';
+  text-shadow: 1px 1px 0px #ddd;
+  filter: dropshadow(color=#ccc, offx=1, offy=1);
+}
+
+.task .comment {
+  color: gray;
+  font-style: italic;
+  clear: both;
+  font-size: 0.9em;
+  font-family: 'Open Sans';
+}
+
+.task .error {
+  color: #fff;
+  background-color: #ee6066 !important;
+  padding: 0px !important;
+  font-family: 'Open Sans';
+  font-size: 0.9em;
+  margin-left: -5px;
+  margin-right: -5px;
+  cursor: pointer;
+}
+
+.task .stacktrace {
+  display: none;
+  overflow: auto;
+}
+
+.highlight {
+  background-color: #ffff88;
+}

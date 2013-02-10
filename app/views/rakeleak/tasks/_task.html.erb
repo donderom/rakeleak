@@ -1,0 +1,7 @@
+<div class="task">
+  <div class="name"><%= task.name %></div>
+  <div><%= button_to "Run", rakeleak.run_task_path(task.name), remote: true, method: :post, disable_with: 'Running...', class: 'button' %></div>
+  <div class="comment"><%= task.comment %></div>
+  <div class="error"></div>
+  <div class="stacktrace"></div>
+</div>

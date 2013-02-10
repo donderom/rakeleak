@@ -1,0 +1,15 @@
+<div id="container">
+  <div id="menu">
+    <input id="search_input" placeholder="Type to filter" type="search">
+    <div class="name">
+      rakeleak
+    </div>
+  </div>
+  <ul id="search_list">
+    <% @tasks.each do |task| %>
+      <li>
+        <%= render partial: 'task', locals: { task: task } %>
+      </li>
+    <% end %>
+  </ul>
+</div>
