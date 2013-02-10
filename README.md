@@ -1,4 +1,4 @@
-# Rakeleak
+# Rakeleak [![Build Status](https://travis-ci.org/donderom/rakeleak.png?branch=master)](https://travis-ci.org/donderom/rakeleak)
 
 Helps you search & run your Rake tasks from Rails (3.2+) application. It:
 
