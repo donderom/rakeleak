@@ -9,14 +9,12 @@ module Rakeleak
     def run
       respond_to do |format|
         begin
-          Rakeleak.run(params[:id])
-          format.json { render json: true }
+          output = Rakeleak.run(params[:id])
+          format.json { render json: { output: output } }
         rescue => e
           response = {
-            error: {
-              msg: e.to_s,
-              stacktrace: e.backtrace.join("\n").to_s
-            }
+            msg: e.to_s,
+            stacktrace: e.backtrace.join("\n").to_s
           }
           format.json { render json: response, status: :forbidden }
         end

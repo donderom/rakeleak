@@ -16,7 +16,7 @@ module Rakeleak
     end
 
     test 'run task' do
-      name = 'simple'
+      name = :simple
       done = false
       Rake::Task.tasks << task(name) {|_| done = true }
 
@@ -26,7 +26,7 @@ module Rakeleak
     end
 
     test 'return forbidden status if task failed' do
-      name = 'error'
+      name = :error
       Rake::Task.tasks << task(name) {|_| raise 'boom!' }
 
       post :run, id: name, format: :json
@@ -34,15 +34,26 @@ module Rakeleak
     end
 
     test 'return error description if task failed' do
-      name = 'error'
+      name = :error
       message = 'boom!'
       Rake::Task.tasks << task(name) {|_| raise message }
 
       post :run, id: name, format: :json
       json = JSON.parse(response.body)
-      assert_not_nil json['error']
-      assert_equal message, json['error']['msg']
-      assert_not_nil json['error']['stacktrace']
+      assert_not_nil json['msg']
+      assert_equal message, json['msg']
+      assert_not_nil json['stacktrace']
+    end
+
+    test 'return task output if any' do
+      name = :puts
+      message = 'boom!'
+      Rake::Task.tasks << task(name) {|_| puts message }
+
+      post :run, id: name, format: :json
+      json = JSON.parse(response.body)
+      assert_not_nil json['output']
+      assert_equal "#{message}\n", json['output']
     end
   end
 end

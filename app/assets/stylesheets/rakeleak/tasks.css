@@ -81,8 +81,12 @@ input[type="search"] {
   display: block;
 }
 
-.errortask {
+.error {
   border: solid 2px #ee6066;
+}
+
+.success {
+  border: solid 2px #bfe7ab;
 }
 
 .task .name {
@@ -103,9 +107,8 @@ input[type="search"] {
   font-family: 'Open Sans';
 }
 
-.task .error {
+.task .result {
   color: #fff;
-  background-color: #ee6066 !important;
   padding: 0px !important;
   font-family: 'Open Sans';
   font-size: 0.9em;
@@ -114,7 +117,16 @@ input[type="search"] {
   cursor: pointer;
 }
 
-.task .stacktrace {
+.task .result.error {
+  background-color: #ee6066 !important;
+}
+
+.task .result.success {
+  color: #595959;
+  background-color: #bfe7ab !important;
+}
+
+.task .output {
   display: none;
   overflow: auto;
 }

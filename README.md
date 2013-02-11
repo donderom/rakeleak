@@ -5,6 +5,7 @@ Helps you search & run your Rake tasks from Rails (3.2+) application. It:
 * Shows all the available Rake tasks;
 * Allows you to search by task name and description;
 * And run any task you want (see TODO for more details);
+* See the task output if any;
 * If the task was failed you can see the error message and even stacktrace.
 
 ## Getting Started
@@ -27,12 +28,11 @@ Just go to ```http://localhost:3000/rakeleak/tasks```.
 
 This is how it feels in action:
 ![Rakeleak in Action](http://f.cl.ly/items/2C0C2A3r0a2c2L0F162K/rakeleak.png)
+![Rakeleak in Action](http://f.cl.ly/items/1z1y3y1d3E2i1x3l3C1O/rakeleak2.png)
 
 ## TODO
 
 * Passing parameters (now it's useful only for tasks without arguments)
-* Showing log maybe?
-* Or capturing $STDOUT?
 * Remove explicit mounting?
 
 ## License
