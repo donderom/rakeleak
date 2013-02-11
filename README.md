@@ -5,8 +5,8 @@ Helps you search & run your Rake tasks from Rails (3.2+) application. It:
 * Shows all the available Rake tasks;
 * Allows you to search by task name and description;
 * And run any task you want (see TODO for more details);
-* See the task output if any;
-* If the task was failed you can see the error message and even stacktrace.
+* Shows the task output if any;
+* Shows the error message and even stacktrace if the task was failed.
 
 ## Getting Started
 
