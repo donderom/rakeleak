@@ -39,20 +39,32 @@ $(function() {
 
   $("form.button_to").bind("ajax:error", function(xhr, data, status) {
     var response = $.parseJSON(data.responseText);
-    var errorMsg = "<div class='msg'>" + downArrow + response.msg + "</div>";
     var task = $(this).closest(".task");
+    var result = task.find(".result");
+
+    // change class from 'success' to 'error' for task and result elements
     task.removeClass("success").addClass("error");
-    task.find(".result").html(errorMsg).removeClass("success").addClass("error");
+    result.removeClass("success").addClass("error");
+    // set error message...
+    result.find(".msg").html(downArrow + response.msg);
+    // ...and stacktrace
     task.find(".output").html("<pre>" + response.stacktrace + "</pre>");
   }).bind("ajax:success", function(xhr, data, status) {
     var task = $(this).closest(".task");
-    task.removeClass("error");
-    var result = task.find(".result").empty().removeClass("error").removeClass("success");
-    var output = task.find(".output").empty();
+    var result = task.find(".result");
+    var output = task.find(".output");
+    var msg = result.find(".msg");
 
+    // remove any content & classes which were previously set
+    task.removeClass("error");
+    result.removeClass("error").removeClass("success");
+    output.empty();
+    msg.empty();
+
+    // show task' output if any
     if (data.output.length > 0) {
       task.addClass("success");
-      result.html("<div class='msg'>" + downArrow + "Click here to see the task output</div>");
+      msg.html(downArrow + "Click here to see the task output");
       result.addClass("success");
       output.html("<pre>" + data.output + "</pre>");
     }
