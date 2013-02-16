@@ -6,6 +6,22 @@ $(function() {
     $("li:visible:even").css("background-color", "#ffffff");
   };
 
+  var twodigit = function(value) {
+    return (value < 10 ? '0' : '') + value;
+  };
+
+  var time = function() {
+    var date = new Date();
+    return twodigit(date.getHours()) + ":" + twodigit(date.getMinutes());
+  };
+
+  var timeNode = function() {
+    return "<div class='time'>" + time() + "</div>";
+  };
+
+  var leftArrow = "<img src=\'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAANElEQVQYV2NkYGD4D8SEACMjVAU+xWA1MIUgNjbFcHlkheiKUeTQFcIUY4hjU4jVY0NBIQA2XwULPNHkwgAAAABJRU5ErkJggg==\'>";
+  var downArrow = "<img src=\'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAANklEQVQYV2NkYGD4D8SMQIwXgBSAFIIAXsXICvEqRleIUzE2hVgVk20iTg+R7GuiwpFQWIPlAYx9CQtnBpznAAAAAElFTkSuQmCC\'>";
+
   stripe();
 
   $("#search_input").focus();
@@ -20,9 +36,6 @@ $(function() {
       $("div.task").highlight($("#search_input").val());
     }, 50);
   });
-
-  var leftArrow = "<img src=\'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAANElEQVQYV2NkYGD4D8SEACMjVAU+xWA1MIUgNjbFcHlkheiKUeTQFcIUY4hjU4jVY0NBIQA2XwULPNHkwgAAAABJRU5ErkJggg==\'>";
-  var downArrow = "<img src=\'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAANklEQVQYV2NkYGD4D8SMQIwXgBSAFIIAXsXICvEqRleIUzE2hVgVk20iTg+R7GuiwpFQWIPlAYx9CQtnBpznAAAAAElFTkSuQmCC\'>";
 
   $(".task .result").click(function() {
     var output = $(this).parent().find(".output");
@@ -46,7 +59,7 @@ $(function() {
     task.removeClass("success").addClass("error");
     result.removeClass("success").addClass("error");
     // set error message...
-    result.find(".msg").html(downArrow + response.msg);
+    result.find(".msg").html(timeNode() + downArrow + response.msg);
     // ...and stacktrace
     task.find(".output").html("<pre>" + response.stacktrace + "</pre>");
   }).bind("ajax:success", function(xhr, data, status) {
@@ -64,7 +77,7 @@ $(function() {
     // show task' output if any
     if (data.output.length > 0) {
       task.addClass("success");
-      msg.html(downArrow + "Click here to see the task output");
+      msg.html(timeNode() + downArrow + "Click here to see the task output");
       result.addClass("success");
       output.html("<pre>" + data.output + "</pre>");
     }
