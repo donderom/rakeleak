@@ -12,14 +12,14 @@ class RakeleakTest < ActiveSupport::TestCase
   test 'running existing task' do
     name = :simple
     Rake::Task.tasks << task(name) {|_| 'eval this string and stop' }
-    assert_nothing_raised { Rakeleak.run(name) }
+    assert_nothing_raised { Rakeleak.run(id: name) }
   end
 
   test 'running existing task throwing exception' do
     name = :exception
     message = 'simple exception'
     Rake::Task.tasks << task(name) {|_| raise message }
-    assert_raise(RuntimeError) { Rakeleak.run(name) }
+    assert_raise(RuntimeError) { Rakeleak.run(id: name) }
   end
 
   test '::capture_stdout captures simple output by $stdout.puts' do
@@ -53,4 +53,21 @@ class RakeleakTest < ActiveSupport::TestCase
     assert_raise(RuntimeError) { Rakeleak.capture_stdout { raise 'any exception' } }
   end
 
+  test 'loading rake task arguments' do
+    name = :args
+    Rake::Task.tasks << task(name, [:arg1, :arg2])
+    assert_equal [:foo, :bar], Rakeleak.args(id: name, arg1: :foo, arg2: :bar)
+  end
+
+  test 'filtering rake task arguments if there is no any' do
+    name = :filtered_args
+    Rake::Task.tasks << task(name, [:arg1, :arg2])
+    assert_equal [], Rakeleak.args(id: name, some_value: 1)
+  end
+
+  test 'running task with arguments' do
+    name = :with_args
+    Rake::Task.tasks << task(name, [:arg1, :arg2]) {|_, args| puts "#{args[:arg1]}#{args[:arg2]}" }
+    assert_equal "foobar\n", Rakeleak.run(id: name, arg1: 'foo', arg2: 'bar')
+  end
 end

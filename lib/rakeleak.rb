@@ -5,9 +5,10 @@ module Rakeleak
     Rake::Task.tasks
   end
 
-  def self.run(task)
+  def self.run(params)
+    task = params[:id]
     Rake::Task[task].reenable
-    capture_stdout { Rake::Task[task].invoke }
+    capture_stdout { Rake::Task[task].invoke(*args(params)) }
   end
 
   def self.capture_stdout
@@ -21,5 +22,9 @@ module Rakeleak
     trap.string
   ensure
     $stdout = stdout
+  end
+
+  def self.args(params)
+    Rake::Task[params[:id]].arg_names.map{|arg| params[arg] }.reject(&:nil?)
   end
 end

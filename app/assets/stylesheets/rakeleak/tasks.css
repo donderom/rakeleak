@@ -39,12 +39,13 @@ body {
   cursor: pointer;
   background-color: #4d90fe;
   color: #f7f7f7;
-  border-radius: 5px;
+  border-radius: 3px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   padding: 2px 3px;
   text-transform: uppercase;
   display: none;
+  margin-top: 5px;
 }
 
 .button:hover {
@@ -54,11 +55,24 @@ body {
 .button:disabled {
   background-color: gray;
   cursor: auto;
-  display: block;
+  display: inline-block;
+  margin-top: 5px;
 }
 
 input[type="search"] {
   font-size: 16px;
+}
+
+input[type="text"] {
+  margin-top: 2px;
+  border: 1px solid #cccccc;
+  height: 16px;
+  padding: 2px;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  color: #555555;
+  display: none;
 }
 
 #search_list {
@@ -78,7 +92,11 @@ input[type="search"] {
 }
 
 #search_list li div:hover .button {
-  display: block;
+  display: inline-block;
+}
+
+#search_list li div:hover input {
+  display: inline-block;
 }
 
 .error {

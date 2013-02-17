@@ -55,5 +55,15 @@ module Rakeleak
       assert_not_nil json['output']
       assert_equal "#{message}\n", json['output']
     end
+
+    test 'handle task arguments if any' do
+      name = :task_with_args
+      Rake::Task.tasks << task(name, [:arg1, :arg2]) {|_, args| puts "#{args[:arg1]}#{args[:arg2]}" }
+
+      post :run, id: name, arg1: 'foo', arg2: 'bar', format: :json
+      json = JSON.parse(response.body)
+      assert_not_nil json['output']
+      assert_equal "foobar\n", json['output']
+    end
   end
 end

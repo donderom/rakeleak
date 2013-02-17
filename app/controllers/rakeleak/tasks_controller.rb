@@ -9,7 +9,7 @@ module Rakeleak
     def run
       respond_to do |format|
         begin
-          output = Rakeleak.run(params[:id])
+          output = Rakeleak.run(params)
           format.json { render json: { output: output } }
         rescue => e
           response = {

@@ -4,7 +4,7 @@ Helps you search & run your Rake tasks from Rails (3.2+) application. It:
 
 * Shows all the available Rake tasks;
 * Allows you to search by task name and description;
-* And run any task you want (see TODO for more details);
+* And run any task you want (see TODO for limitations);
 * Shows the task output if any;
 * Shows the error message and even stacktrace if the task was failed.
 
@@ -32,7 +32,7 @@ This is how it feels in action:
 
 ## TODO
 
-* Passing parameters (now it's useful only for tasks without arguments)
+* Passing environment variables (like VERSION=0)
 * Remove explicit mounting?
 
 ## License

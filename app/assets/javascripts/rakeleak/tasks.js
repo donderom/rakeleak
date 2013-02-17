@@ -50,7 +50,7 @@ $(function() {
     }
   });
 
-  $("form.button_to").bind("ajax:error", function(xhr, data, status) {
+  $("form").bind("ajax:error", function(xhr, data, status) {
     var response = $.parseJSON(data.responseText);
     var task = $(this).closest(".task");
     var result = task.find(".result");
