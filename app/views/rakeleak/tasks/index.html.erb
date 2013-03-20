@@ -6,10 +6,6 @@
     </div>
   </div>
   <ul id="search_list">
-    <% @tasks.each do |task| %>
-      <li>
-        <%= render partial: 'task', locals: { task: task } %>
-      </li>
-    <% end %>
+    <%= render partial: 'task', collection: @tasks %>
   </ul>
 </div>

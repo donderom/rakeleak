@@ -11,7 +11,7 @@ module Rakeleak
         begin
           output = Rakeleak.run(params)
           format.json { render json: { output: output } }
-        rescue => e
+        rescue Exception => e
           response = {
             msg: e.to_s,
             stacktrace: e.backtrace.join("\n").to_s
