@@ -27,7 +27,7 @@ mount Rakeleak::Engine, at: "/rakeleak"
 Just go to ```http://localhost:3000/rakeleak/tasks```.
 
 This is how it feels in action:
-![Rakeleak in Action](http://f.cl.ly/items/0M2K172v0V040D2G0F3J/rakeleak_0.4.0.png)
+![Rakeleak in Action](http://f.cl.ly/items/3x0i252W2f0A2j0r3M3w/rakeleak_0.4.0_colored.png)
 
 ## License
 
