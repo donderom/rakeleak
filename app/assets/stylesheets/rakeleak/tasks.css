@@ -22,12 +22,20 @@ body {
   margin-bottom: 10px;
 }
 
-#menu .name {
+#menu #name {
   float: right;
   color: #eee;
   font-size: 2em;
   font-family: 'Open Sans Condensed';
   margin-top: -10px;
+}
+
+#menu #name span.green {
+  color: #bfe7ab;
+}
+
+#menu #name span.red {
+  color: #ee6066;
 }
 
 #search_input {
